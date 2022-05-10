@@ -19,6 +19,7 @@ public class HelloController {
         return "Hello, " + name + "!";
     }
 
+
     @GetMapping("/increment/{number}")
     @ResponseBody
     public String addOne(@PathVariable int number) {
