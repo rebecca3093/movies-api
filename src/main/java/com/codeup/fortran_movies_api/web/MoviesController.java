@@ -2,7 +2,9 @@ package com.codeup.fortran_movies_api.web;
 
         import com.codeup.fortran_movies_api.data.Movie;
         import com.codeup.fortran_movies_api.data.MoviesRepository;
+        import org.springframework.http.HttpStatus;
         import org.springframework.web.bind.annotation.*;
+        import org.springframework.web.server.ResponseStatusException;
 
         import javax.servlet.http.HttpServlet;
         import javax.servlet.http.HttpServletResponse;
@@ -63,7 +65,7 @@ public class MoviesController {
         try{
             moviesRepository.deleteById(id);
         }catch (Exception ex){
-            response.sendError(200,"No movie matching ID: " + id);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No matching Movie with ID: " + id);
         }
 
     }
