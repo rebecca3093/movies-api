@@ -1,3 +1,4 @@
+/*
 package com.codeup.fortran_movies_api.data;
 
 import org.hibernate.annotations.ManyToAny;
@@ -46,3 +47,4 @@ public class Actor {
         this.actor_name = actor_name;
     }
 }
+*/
