@@ -1,31 +1,29 @@
-/*
 package com.codeup.fortran_movies_api.data;
-
-import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name= "actors")
+@Table(name = "actors")
 public class Actor {
-
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String name;
 
     @ManyToMany
-    @JoinTable(name = "movie-actor",
-            joinColumns = @JoinTable(name = "actor_name", foreignKey = "id"),
-            inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id")
+    @JoinTable(name = "movie_actor",
+            joinColumns =
+            @JoinColumn(name = "actor_id", referencedColumnName = "id"),
+            inverseJoinColumns =
+            @JoinColumn(name = "movie_id", referencedColumnName = "id")
     )
-    public List<Movie> actors;
+    private List<Movie> movies;
 
-    private int id;
-    private String actor_name;
 
-    public Actor(int id, String actor_name) {
+    public Actor(int id, String name) {
         this.id = id;
-        this.actor_name = actor_name;
+        this.name = name;
     }
 
     public Actor() {
@@ -39,12 +37,19 @@ public class Actor {
         this.id = id;
     }
 
-    public String getActor_name() {
-        return actor_name;
+    public String getName() {
+        return name;
     }
 
-    public void setActor_name(String actor_name) {
-        this.actor_name = actor_name;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Actor{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
-*/
